@@ -7,57 +7,48 @@
   });
 })();
 
-// Rotating Australia background photos (Unsplash Source - no API key)
 (function rotatingBackground(){
   const BG_INTERVAL_MS = 12000;
 
-  const bgQueries = [
-    "australia,landscape",
-    "sydney,opera-house",
-    "bondi,beach",
-    "blue+mountains,australia",
-    "melbourne,city",
-    "great+ocean+road",
-    "uluru,australia",
-    "great+barrier+reef",
-    "tasmania,nature",
-    "perth,coast"
+  // Use direct image URLs instead of source.unsplash.com (which is often broken/deprecated).
+  // Wikimedia "Special:FilePath" reliably serves the file.
+  const bgImages = [
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Sydney_opera_house_2010.jpg",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/The_Twelve_Apostles_2011.jpg",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Uluru%2C_helicopter_view.jpg",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Reef_Snorkelling_on_the_Great_Barrier_Reef.jpg"
   ];
 
   const bgA = document.getElementById("bgA");
   const bgB = document.getElementById("bgB");
-  if(!bgA || !bgB) return; // page missing background HTML
+  if(!bgA || !bgB) return;
 
-  const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function unsplashUrl(query, sig) {
-    return `https://source.unsplash.com/2400x1600/?${encodeURIComponent(query)}&sig=${sig}`;
-  }
+  const prefersReduced =
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function preload(url) {
     return new Promise((resolve) => {
       const img = new Image();
-      img.onload = () => resolve(url);
-      img.onerror = () => resolve(url);
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
       img.src = url;
     });
   }
 
-  let sig = 1;
   let idx = 0;
   let showingA = true;
 
   async function setNext(initial = false){
-    const query = bgQueries[idx % bgQueries.length];
-    const url = unsplashUrl(query, sig++);
+    const url = bgImages[idx % bgImages.length];
     idx++;
 
-    const readyUrl = await preload(url);
+    // Wait until image is ready before fading
+    await preload(url);
 
     const incoming = showingA ? bgB : bgA;
     const outgoing = showingA ? bgA : bgB;
 
-    incoming.style.backgroundImage = `url("${readyUrl}")`;
+    incoming.style.backgroundImage = `url("${url}")`;
     incoming.classList.add("show");
     outgoing.classList.remove("show");
     showingA = !showingA;
@@ -65,10 +56,8 @@
     if(initial) incoming.classList.add("show");
   }
 
-  // Reduced motion: set one static image
   if(prefersReduced){
-    const url = unsplashUrl(bgQueries[0], sig++);
-    bgA.style.backgroundImage = `url("${url}")`;
+    bgA.style.backgroundImage = `url("${bgImages[0]}")`;
     bgA.classList.add("show");
     return;
   }
