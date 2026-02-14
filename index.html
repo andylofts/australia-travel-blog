@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Australia Trip Journal</title>
   <meta name="description" content="A travel blog for my upcoming trip to Australia — itinerary, posts, photos, packing list, and budget." />
+
   <style>
     :root{
       --bg:#0b1020;
-      --panel: rgba(255,255,255bosy,.06);
+      --panel: rgba(255,255,255,.06);
       --panel2: rgba(255,255,255,.09);
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.72);
@@ -29,6 +30,7 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
+      /* Keep the existing gradients; photos sit behind this via bg-rotator */
       background:
         radial-gradient(1200px 600px at 15% 0%, rgba(106,228,255,.18), transparent 60%),
         radial-gradient(900px 500px at 80% 10%, rgba(167,139,250,.18), transparent 60%),
@@ -45,9 +47,7 @@
       border-bottom:1px solid var(--line);
     }
     .topbar .inner{max-width:var(--max); margin:0 auto; padding:12px 18px; display:flex; gap:12px; align-items:center; justify-content:space-between}
-    .brand{
-      display:flex; align-items:center; gap:12px; min-width: 240px;
-    }
+    .brand{display:flex; align-items:center; gap:12px; min-width: 240px;}
     .logo{
       width:38px; height:38px; border-radius:14px;
       background: radial-gradient(circle at 30% 30%, var(--accent), transparent 60%),
@@ -58,9 +58,7 @@
     }
     .brand h1{font-size:14px; margin:0; letter-spacing:.4px}
     .brand p{margin:0; font-size:12px; color:var(--muted)}
-    nav{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
-    }
+    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
     nav a{
       font-size:13px; color:var(--muted);
       padding:8px 10px;
@@ -68,6 +66,7 @@
       border:1px solid transparent;
     }
     nav a:hover{color:var(--text); border-color: var(--line); background: rgba(255,255,255,.05)}
+
     .hero{
       margin-top:18px;
       display:grid;
@@ -76,7 +75,7 @@
       align-items:stretch;
     }
     @media (max-width: 900px){
-      .hero{grid-template-columns: 1fr; }
+      .hero{grid-template-columns: 1fr;}
       .brand{min-width:auto}
     }
     .card{
@@ -134,11 +133,7 @@
     }
     .btnSmall{padding:8px 10px; border-radius: 999px; font-size:12px}
     .heroSide{padding:18px}
-    .statGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
+    .statGrid{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
     .stat{
       border:1px solid var(--line);
       border-radius: 16px;
@@ -148,24 +143,13 @@
     .stat .label{color:var(--muted); font-size:12px}
     .stat .value{font-size:18px; margin-top:6px}
     .stat .mini{margin-top:4px; color:var(--muted); font-size:12px}
-    .section{
-      margin-top:22px;
-      padding:18px;
-    }
-    .sectionHeader{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
-      margin-bottom: 12px;
-    }
+    .section{margin-top:22px; padding:18px;}
+    .sectionHeader{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-bottom: 12px;}
     .sectionHeader h2{margin:0; font-size:18px}
     .sectionHeader p{margin:0; color:var(--muted); font-size:13px}
-    .grid2{
-      display:grid; gap:16px;
-      grid-template-columns: 1fr 1fr;
-    }
+    .grid2{display:grid; gap:16px; grid-template-columns: 1fr 1fr;}
     @media (max-width: 900px){ .grid2{grid-template-columns:1fr} }
-    .itinerary{
-      display:grid; gap:10px;
-    }
+    .itinerary{display:grid; gap:10px;}
     .day{
       border:1px solid var(--line);
       border-radius: 16px;
@@ -176,9 +160,7 @@
       gap:12px;
       align-items:start;
     }
-    @media (max-width: 520px){
-      .day{grid-template-columns:1fr}
-    }
+    @media (max-width: 520px){ .day{grid-template-columns:1fr} }
     .day .pill{
       display:inline-flex; align-items:center; gap:8px;
       font-size:12px; color:var(--muted);
@@ -211,9 +193,7 @@
       background: rgba(255,255,255,.04);
       width: fit-content;
     }
-    .posts{
-      display:grid; gap:12px;
-    }
+    .posts{display:grid; gap:12px;}
     .post{
       border:1px solid var(--line);
       border-radius: 16px;
@@ -223,11 +203,7 @@
     .postMeta{display:flex; gap:10px; flex-wrap:wrap; align-items:center; color:var(--muted); font-size:12px}
     .post h3{margin:8px 0 8px; font-size:16px}
     .post p{margin:0; color:var(--muted); font-size:13px}
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:10px;
-    }
+    .gallery{display:grid; grid-template-columns: repeat(12, 1fr); gap:10px;}
     .ph{
       border:1px solid var(--line);
       border-radius: 16px;
@@ -262,10 +238,7 @@
     @media (max-width: 900px){
       .col-6,.col-4,.col-8{grid-column: span 12}
     }
-
-    .controls{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
-    }
+    .controls{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;}
     input, textarea{
       width:100%;
       padding:11px 12px;
@@ -278,14 +251,10 @@
     }
     textarea{min-height: 110px; resize: vertical}
     input::placeholder, textarea::placeholder{color: rgba(255,255,255,.45)}
-    .row{
-      display:grid; grid-template-columns: 1fr 1fr; gap:12px;
-    }
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
     @media (max-width: 700px){ .row{grid-template-columns:1fr} }
 
-    .list{
-      display:grid; gap:10px;
-    }
+    .list{display:grid; gap:10px;}
     .listItem{
       display:flex; align-items:center; justify-content:space-between; gap:10px;
       padding:10px 12px;
@@ -295,13 +264,7 @@
     }
     .listItem label{display:flex; gap:10px; align-items:center; color:var(--muted); font-size:13px}
     .listItem input[type="checkbox"]{width:18px; height:18px}
-    .listItem .amt{color:var(--muted); font-size:12px}
-    .footer{
-      margin-top:26px;
-      color: var(--muted);
-      font-size: 12px;
-      text-align:center;
-    }
+    .footer{margin-top:26px; color: var(--muted); font-size: 12px; text-align:center;}
 
     /* modal */
     .modal{
@@ -326,9 +289,7 @@
       padding:12px 12px 0 12px;
     }
     .modalTitle{color:var(--muted); font-size:12px}
-    .modalBody{
-      padding: 12px;
-    }
+    .modalBody{padding: 12px;}
     .modalImg{
       height: 420px;
       border-radius: 18px;
@@ -353,53 +314,48 @@
       font-size:12px;
     }
     .toast.show{display:block}
-/* --- Rotating photo background --- */
-.bg-rotator {
-  position: fixed;
-  inset: 0;
-  z-index: -5;              /* sits behind everything */
-  overflow: hidden;
-  pointer-events: none;
-}
 
-.bg-layer {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.03);   /* tiny scale to hide edge jitter */
-  filter: saturate(1.05) contrast(1.05);
-  opacity: 0;
-  transition: opacity 1200ms ease;
-}
-
-.bg-layer.show { opacity: 1; }
-
-/* dark overlay so text stays readable */
-.bg-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(1200px 600px at 15% 0%, rgba(11,16,32,.55), rgba(11,16,32,.82) 60%),
-    radial-gradient(900px 600px at 85% 15%, rgba(11,16,32,.40), rgba(11,16,32,.82) 60%),
-    linear-gradient(to bottom, rgba(11,16,32,.65), rgba(11,16,32,.88));
-}
-
-/* OPTIONAL: reduce motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .bg-layer { transition: none; }
-}
-
+    /* --- Rotating photo background --- */
+    .bg-rotator {
+      position: fixed;
+      inset: 0;
+      z-index: -5;              /* behind everything */
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .bg-layer {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.03);   /* hide edge jitter */
+      filter: saturate(1.05) contrast(1.05);
+      opacity: 0;
+      transition: opacity 1200ms ease;
+    }
+    .bg-layer.show { opacity: 1; }
+    /* dark overlay so text stays readable */
+    .bg-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(1200px 600px at 15% 0%, rgba(11,16,32,.55), rgba(11,16,32,.82) 60%),
+        radial-gradient(900px 600px at 85% 15%, rgba(11,16,32,.40), rgba(11,16,32,.82) 60%),
+        linear-gradient(to bottom, rgba(11,16,32,.65), rgba(11,16,32,.88));
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .bg-layer { transition: none; }
+    }
   </style>
 </head>
 
 <body>
-<!-- Rotating background images -->
-<div class="bg-rotator" aria-hidden="true">
-  <div class="bg-layer" id="bgA"></div>
-  <div class="bg-layer" id="bgB"></div>
-  <div class="bg-overlay"></div>
-</div>
+  <!-- Rotating background images -->
+  <div class="bg-rotator" aria-hidden="true">
+    <div class="bg-layer" id="bgA"></div>
+    <div class="bg-layer" id="bgB"></div>
+    <div class="bg-overlay"></div>
+  </div>
 
   <header class="topbar">
     <div class="inner">
@@ -654,7 +610,7 @@
               <p>Open a simple search in Google Maps. Edit destinations in the URL query.</p>
               <a class="btn btnSmall" target="_blank" rel="noreferrer"
                  href="https://www.google.com/maps/search/?api=1&query=Sydney+Melbourne+Great+Ocean+Road+Uluru+Great+Barrier+Reef">
-                Open maps
+                Open maps ↗
               </a>
             </div>
             <div class="post">
@@ -729,7 +685,6 @@
         const raw = localStorage.getItem(KEY);
         if(!raw) return structuredClone(DEFAULTS);
         const parsed = JSON.parse(raw);
-        // shallow merge for new fields
         return { ...structuredClone(DEFAULTS), ...parsed };
       }catch{
         return structuredClone(DEFAULTS);
@@ -852,7 +807,6 @@
     function deleteDay(idx){
       if(!confirm("Delete this day?")) return;
       state.itinerary.splice(idx, 1);
-      // renumber labels if they look like "Day N"
       state.itinerary = state.itinerary.map((d,i)=>{
         if(/^Day\s+\d+$/i.test(d.dateLabel.trim())){
           return { ...d, dateLabel: `Day ${i+1}` };
@@ -1105,6 +1059,76 @@
       updateCountdown();
     }
 
+    // ---------- Rotating Australia background photos ----------
+    const BG_INTERVAL_MS = 12000; // rotation speed
+
+    // Stock-photo style sources via Unsplash Source (no API key).
+    // NOTE: these are fetched live from Unsplash; you can replace with your own hosted image URLs if you prefer.
+    const bgQueries = [
+      "australia,landscape",
+      "sydney,opera-house",
+      "bondi,beach",
+      "blue+mountains,australia",
+      "melbourne,city",
+      "great+ocean+road",
+      "uluru,australia",
+      "great+barrier+reef",
+      "tasmania,nature",
+      "perth,coast"
+    ];
+
+    function unsplashUrl(query, sig) {
+      return `https://source.unsplash.com/2400x1600/?${encodeURIComponent(query)}&sig=${sig}`;
+    }
+
+    let bgSig = 1;
+    let bgIndex = 0;
+    let showingA = true;
+
+    const bgA = document.getElementById("bgA");
+    const bgB = document.getElementById("bgB");
+
+    function preload(url) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(url);
+        img.onerror = () => resolve(url);
+        img.src = url;
+      });
+    }
+
+    async function setNextBackground(initial = false) {
+      const query = bgQueries[bgIndex % bgQueries.length];
+      const url = unsplashUrl(query, bgSig++);
+      bgIndex++;
+
+      const readyUrl = await preload(url);
+
+      const incoming = showingA ? bgB : bgA;
+      const outgoing = showingA ? bgA : bgB;
+
+      incoming.style.backgroundImage = `url("${readyUrl}")`;
+      incoming.classList.add("show");
+      outgoing.classList.remove("show");
+
+      showingA = !showingA;
+
+      if (initial) incoming.classList.add("show");
+    }
+
+    function initRotatingBackground(){
+      const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (prefersReduced) {
+        const url = unsplashUrl(bgQueries[0], bgSig++);
+        bgA.style.backgroundImage = `url("${url}")`;
+        bgA.classList.add("show");
+        return;
+      }
+
+      setNextBackground(true);
+      setInterval(setNextBackground, BG_INTERVAL_MS);
+    }
+
     // ---------- Event wiring ----------
     document.addEventListener("click", (e)=>{
       const btn = e.target.closest("[data-action]");
@@ -1141,7 +1165,6 @@
       }
     });
 
-    // Buttons
     $("#addDayBtn").addEventListener("click", addDay);
     $("#newPostInlineBtn").addEventListener("click", newPost);
     $("#addPostBtn").addEventListener("click", newPost);
@@ -1184,12 +1207,10 @@
       e.target.value = "";
     });
 
-    // Contact form (front-end only)
     $("#contactForm").addEventListener("submit", (e)=>{
       e.preventDefault();
       toast("Message saved locally (demo)");
       const fd = new FormData(e.target);
-      // Add as a note post
       state.posts.push({
         id: crypto.randomUUID(),
         title: "Message",
@@ -1203,7 +1224,6 @@
       e.target.reset();
     });
 
-    // Share link (copies current URL)
     $("#copyLinkBtn").addEventListener("click", async ()=>{
       try{
         await navigator.clipboard.writeText(location.href);
@@ -1213,95 +1233,17 @@
       }
     });
 
-    // Gallery click opens modal
     $$("#galleryGrid .ph").forEach(ph=>{
       ph.addEventListener("click", ()=> openModal(ph.getAttribute("data-title") || "Photo"));
     });
     $("#closeModalBtn").addEventListener("click", closeModal);
     $("#modal").addEventListener("click", (e)=>{ if(e.target.id==="modal") closeModal(); });
     document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeModal(); });
-// ---------- Rotating Australia background photos ----------
-const BG_INTERVAL_MS = 12000; // change rotation speed here
 
-// Using Unsplash "source" images (stock-photo style). No API key needed.
-// Note: these URLs can occasionally repeat; adding `sig` helps randomize.
-const bgQueries = [
-  "australia,landscape",
-  "sydney,opera-house",
-  "melbourne,city",
-  "great+ocean+road",
-  "uluru,australia",
-  "great+barrier+reef",
-  "brisbane,australia",
-  "tasmania,nature",
-  "perth,coast",
-  "blue+mountains,australia"
-];
-
-function unsplashUrl(query, sig) {
-  // 2400x1600 is a good balance of quality/perf for full-screen backgrounds
-  return `https://source.unsplash.com/2400x1600/?${encodeURIComponent(query)}&sig=${sig}`;
-}
-
-let bgSig = 1;
-let bgIndex = 0;
-let showingA = true;
-
-const bgA = document.getElementById("bgA");
-const bgB = document.getElementById("bgB");
-
-// Preload helper so we only fade once the image is ready
-function preload(url) {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.onload = () => resolve(url);
-    img.onerror = () => resolve(url); // fail-soft: still try to display
-    img.src = url;
-  });
-}
-
-async function setNextBackground(initial = false) {
-  const query = bgQueries[bgIndex % bgQueries.length];
-  const url = unsplashUrl(query, bgSig++);
-
-  bgIndex++;
-
-  const readyUrl = await preload(url);
-
-  const incoming = showingA ? bgB : bgA;
-  const outgoing = showingA ? bgA : bgB;
-
-  incoming.style.backgroundImage = `url("${readyUrl}")`;
-  incoming.classList.add("show");
-  outgoing.classList.remove("show");
-
-  showingA = !showingA;
-
-  if (initial) {
-    // ensure one layer is visible on load
-    incoming.classList.add("show");
-  }
-}
-
-// Start rotation
-(async function initRotatingBackground(){
-  // Respect reduced motion: keep one static image
-  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const query = bgQueries[0];
-    const url = unsplashUrl(query, bgSig++);
-    bgA.style.backgroundImage = `url("${url}")`;
-    bgA.classList.add("show");
-    return;
-  }
-
-  await setNextBackground(true);
-  setInterval(setNextBackground, BG_INTERVAL_MS);
-})();
-    // Init
+    // ---------- Init ----------
     renderAll();
+    initRotatingBackground();
     setInterval(updateCountdown, 30_000);
-
-
   </script>
 </body>
 </html>
